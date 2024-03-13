@@ -94,12 +94,12 @@ export default function ChatArea() {
               <textarea
                 value={theInput}
                 onChange={(event) => setTheInput(event.target.value)}
-                className="w-[85%] h-10 px-3 py-2 resize-none overflow-y-auto text-black bg-gray-300 rouded"
+                className="w-[85%] h-10 px-3 rounded-l-md py-2 resize-none overflow-y-auto text-black bg-gray-300 rouded"
                 onKeyDown={Submit}
               />
               <button
                 onClick={callGetResponse}
-                className=" bg-[#5882ee] text-white px-4 py-2 rounded-sm "
+                className=" bg-[#1f3878] rounded-r-md text-white px-4 py-2 rounded-sm "
               >
                 send
               </button>

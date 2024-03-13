@@ -42,9 +42,8 @@ export default function Home() {
         </Button>
       </Link>
 
-      <ChatArea />
 
-      <Link href="/explore">
+      <Link href="/contribute-knowledge">
         <Button className="text-[0.96rem] mt-2 py- flex gap-1 bg-white hover:bg-gray-200 text-black">
           <span>Contribute knowledge{"  "}</span>{" "}
         </Button>

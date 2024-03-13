@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+
 
 export default function Navbar() {
   return (
@@ -9,16 +11,13 @@ export default function Navbar() {
         <Link href="/secure-me"><Button className="bg-[#283d73] text-white hover:bg-[#1e2e56]">
           Check Security
         </Button></Link>
-        <Link href="/explore"><Button className="bg-[#283d73] text-white hover:bg-[#1e2e56]">
+        <Link href="/contribute-knowledge"><Button className="bg-[#283d73] text-white hover:bg-[#1e2e56]">
           Contribute Knowledge
         </Button></Link>
-        <Link href="/public-fund"><Button className="bg-[#283d73] text-white hover:bg-[#1e2e56]">
-          Public Fund
-        </Button>
-        </Link>
+
 
         <div>
-          NOTHING HERE
+          <ConnectButton />
         </div>
       </div>
     </div>

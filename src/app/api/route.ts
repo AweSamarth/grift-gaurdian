@@ -2,17 +2,6 @@ import axios from "axios";
 import { NextRequest, NextResponse } from "next/server";
 
 
-// Load environment variables from .env file
-
-async function main(prompt: string) {
-
-}
-
-// Example call to the main function
-main("Can you figure out how to make a chatbot?");
-
-
-
 export async function POST(req:NextRequest, res:NextResponse) {
     const body   = await req.json()
     console.log(body)
@@ -23,6 +12,8 @@ export async function POST(req:NextRequest, res:NextResponse) {
 
     try {
       // Construct the request payload
+      
+
       const payload = {
         question: prompt,
         chat_history: body.messages,
@@ -31,7 +22,8 @@ export async function POST(req:NextRequest, res:NextResponse) {
   
       // Set the headers
       const headers = {
-        "x-api-key": process.env.FLOCK_BOT_API_KEY, // Ensure API key is set in .env
+        "x-api-key": process.env.FLOCK_BOT_API_KEY,
+        
       };
   
       // Send POST request using axios
@@ -43,6 +35,7 @@ export async function POST(req:NextRequest, res:NextResponse) {
         }
       );
   
+      console.log(response)
   
       // Output the response data
       console.log(response.data);
