@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -40,6 +40,16 @@ export default function ChatArea() {
 
   const [theInput, setTheInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const messagesEndRef = useRef(null)
+  useEffect(() => {
+    scrollToBottom()
+  }, [messages]);
+
+  const scrollToBottom = () => {
+    //@ts-ignore
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+  }
+
 
   const Submit = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (event.key === "Enter") {
@@ -81,6 +91,7 @@ export default function ChatArea() {
                   </div>
                 );
               })}
+              <div ref={messagesEndRef}></div>
 
               {isLoading ? (
                 <div className="self-start  bg-gray-200 text-gray-800 w-max max-w-[18rem] rounded-md px-4 py-3 h-min">

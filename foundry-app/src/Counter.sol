@@ -57,8 +57,8 @@ contract KnowledgeNFT is ERC721Enumerable, Ownable {
     */
     function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
         require(_exists(tokenId), "ERC721Metadata: URI query for nonexistent token");
-
-        return "metadata.json";
+        string memory baseURI = _baseURI();
+        return string(abi.encodePacked(baseURI, "metadata.json"));
     }
 
 

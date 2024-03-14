@@ -16,16 +16,13 @@ async function fileToBinaryString(file: File): Promise<string> {
 export async function POST(req: NextRequest, res: NextResponse) {
   console.log("ye");
   const formData = await req.formData();
-  console.log(formData);
   const theFile = formData.get("theFile") as File;
   fileToBinaryString(theFile)
     .then((binaryString) => {
-      console.log("Binary String:", binaryString);
     })
     .catch((error) => {
       console.error("Error:", error);
     }); 
-  console.log(theFile);
   const fs = require("fs");
 
   try {
@@ -37,27 +34,29 @@ export async function POST(req: NextRequest, res: NextResponse) {
     const headers = {
       "x-api-key": process.env.FLOCK_BOT_API_KEY, // Ensure API key is set in .env
     };
-    console.log(headers);
 
     // Send POST request using axios
-    const response = await axios.post(
-      `${process.env.FLOCK_BOT_ENDPOINT}/contribute/submit_file`,
+    // const response = await axios.post(
+    //   `${process.env.FLOCK_BOT_ENDPOINT}/contribute/submit_file`,
 
-      {
-        payload,
-        headers,
-        params: {
-          file_type: "pdf",
-          model_id: "cltn7tmnq002kixrz61amcs7y",
-        },
-      }
-    );
+    //   {
+    //     payload,
+    //     headers,
+    //     params: {
+    //       file_type: "pdf",
+    //       model_id: "cltn7tmnq002kixrz61amcs7y",
+    //     },
+    //   }
+    // );
 
-    console.log(response.data);
-    const safe = true;
+    // console.log(response.data);
+    
 
     // return NextResponse.json({ output: response.data }, { status: 200 });
-    return NextResponse.json({ safe: safe }, { status: 200 });
+    // return NextResponse.json({ safe: safe }, { status: 200 });
+    return NextResponse.json({ submitted: true }, { status: 200 });
+
+
   } catch (error) {
     console.error("Error:", error);
     return new NextResponse(null, { status: 500 });
