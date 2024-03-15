@@ -58,7 +58,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
   
       // Output the response data
       console.log(response.data);
-      const safe = true
+      const safe = false
   
       // return NextResponse.json({ output: response.data }, { status: 200 });
       return NextResponse.json({ safe: safe, returnedAddress: returnedAddress }, { status: 200 });
