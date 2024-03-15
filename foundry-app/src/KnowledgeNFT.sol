@@ -30,7 +30,7 @@ contract KnowledgeNFT is ERC721Enumerable, Ownable {
         * name in our case is `LW3Punks` and symbol is `LW3P`.
         * Constructor for LW3P takes in the baseURI to set _baseTokenURI for the collection.
         */
-    constructor (string memory baseURI) ERC721("Knowledge", "KNW")   {
+    constructor (string memory baseURI) ERC721("Knowledge", "KNW") Ownable(msg.sender)   {
         _baseTokenURI = baseURI;
     }
 
@@ -56,7 +56,7 @@ contract KnowledgeNFT is ERC721Enumerable, Ownable {
     * This function returns the URI from where we can extract the metadata for a given tokenId
     */
     function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
-        require(_exists(tokenId), "ERC721Metadata: URI query for nonexistent token");
+        require(ownerOf(tokenId) != address(0) , "ERC721Metadata: URI query for nonexistent token");
         string memory baseURI = _baseURI();
         return string(abi.encodePacked(baseURI, "metadata.json"));
     }

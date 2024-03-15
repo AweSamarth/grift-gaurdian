@@ -118,7 +118,7 @@ export default function Home() {
                 <div>
                   NFT claimed successfully! You will soon be able to view it {" "}
                   <Link
-                    href={`https://testnets.opensea.io/assets/sepolia/0x2494dddfe71a5086deb5f5188f08c46f45db8a22/${tokenId}`}
+                    href={`https://testnets.opensea.io/assets/sepolia/${CONTRACT_ADDRESS}/${tokenId}`}
                   >
                     <span className="text-[#88aaff]">here</span>
                   </Link>

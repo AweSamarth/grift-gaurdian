@@ -63,6 +63,11 @@ export default function Home() {
     }
   };
 
+  const resetFields = ()=>{
+    setTheAddress("")
+    setExecuted(false)
+  }
+
 
   return (
     <main className="flex h-screen flex-col items-center justify-start text-white  gap-1">
@@ -77,7 +82,10 @@ export default function Home() {
       <div className="text-4xl pt-24">Check address here</div>
       <div className="flex justify-center flex-col items-center mt-8 gap-3">
         <Label>Address type</Label>
-        <Select value={addressType} onValueChange={handleValueChange}>
+        <Select value={addressType} onValueChange={(event)=>{
+          handleValueChange(event)
+          resetFields()
+          }}>
           <SelectTrigger className="w-[250px] bg-gray-800 outline-none border-none">
             <SelectValue placeholder="User" />
           </SelectTrigger>
@@ -98,6 +106,7 @@ export default function Home() {
               value={theAddress}
               onChange={(event) => {
                 setTheAddress(event.target.value);
+                
               }}
               className="px-1 py-1 rounded-md bg-opacity-45 bg-gray-700 placeholder:text-gray-500 outline-none border-0"
             />
@@ -127,7 +136,7 @@ export default function Home() {
               onClick={() => {sendTransaction({to:`${returnedAddress! as `0x${string}`}`, value:parseEther(value.toString())})}}
               disabled={loading}
             >Send</Button></div>
-        </div>
+        </div> 
       ) : executed && !isSafe ? (
         <div className="text-2xl mt-6 p-5 bg-red-700 rounded-md opacity-40">
           ❌ This address is not safe to interact with, be very cautious!"
